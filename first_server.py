@@ -52,7 +52,7 @@ def inner_join():
         print(x)
 
 def left_join():
-    Q1 = "SELECT Players.firstname as playerfirst, stats.PPG as gamestat FROM player LEFT JOIN stats ON Players.jerseynumber = PlayerStats.number"
+    Q1 = "SELECT Players.firstname as playerfirst, PlayerStats.PPG as gamestat FROM Players LEFT JOIN PlayerStats ON Players.jerseynumber = PlayerStats.number"
     db_Cursor.execute(Q1)
     results = db_Cursor.fetchall()
     for x in results:
@@ -77,4 +77,30 @@ def remove_stats_table():
     db_Cursor.execute("DROP TABLE PlayerStats")
 
 def remove_player_table():
-    db_Cursor.execute("DROP TABLE Players")
+    db_Cursor.execute("DROP TABLE PlayerStats")
+
+
+players = [
+    (33,"Larry", "Bird"),
+    (30,"Stephen", "Curry"),
+    (24,"Kobe", "Bryant"),
+    (23,"Michael", "Jordan")]
+
+stats = [
+    (33,24,88),
+    (30,24,90),
+    (24,25,83),
+    (23,30,83)]
+
+insert_many(players, stats)
+# inner_join()
+# left_join()
+# right_join()
+
+# db_Cursor.execute("SELECT * FROM Players")
+# for x in db_Cursor:
+#     print(x)
+
+# db_Cursor.execute("SELECT * FROM PlayerStats")
+# for x in db_Cursor:
+#     print(x)
